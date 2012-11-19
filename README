@@ -1,0 +1,4 @@
+My portable vim configuration, including the plugins I like and use.
+
+To install, clone this repo to ~/.vim and add a symlink:
+    ln -s ~/.vim/vimrc ~/.vimrc
