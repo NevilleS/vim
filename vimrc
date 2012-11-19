@@ -9,6 +9,12 @@ set expandtab
 set autoindent
 set bs=2
 
+" Use solarized colorscheme
+set t_Co=16
+set background=dark
+let g:solarized_termcolors=16
+colorscheme solarized
+
 " Disable the arrow keys
 map <up> <nop>
 map <down> <nop>
