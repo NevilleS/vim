@@ -58,11 +58,6 @@ set tw=120
 " Easily switch between .h and .cpp in the same directory, or ../src/xyz.cpp <-> ../include/xyz.h
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,:s,include/\(\w\+\.\w\+\)$,XABCX/\1,:s,src/\(\w\+\.\w\+\)$,include/\1,:s,XABCX,src,<CR>
 
-" clang complete
-let g:clang_complete_auto = 0
-let g:clang_complete_copen = 1
-let g:clang_debug = 0
-
 " Enable mouse support
 set mouse=a
 set mousehide
