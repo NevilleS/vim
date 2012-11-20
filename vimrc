@@ -8,6 +8,7 @@ filetype indent on
 set expandtab
 set autoindent
 set bs=2
+set guifont=Consolas
 
 " Use solarized colorscheme
 set t_Co=16
@@ -67,3 +68,8 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,:s,include/\(\w\+\.\w\+
 " Enable mouse support
 set mouse=a
 set mousehide
+
+" Configure Windows
+if has("win32")
+    let g:ruby_path = "C:\Ruby193\bin"
+endif
