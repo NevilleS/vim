@@ -69,6 +69,10 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,:s,include/\(\w\+\.\w\+
 set mouse=a
 set mousehide
 
+" Don't do full tab completion unless you hit tab 3 times
+set wildmode=longest,list,full
+set wildmenu
+
 " Configure Windows
 if has("win32")
     let g:ruby_path = "C:\Ruby193\bin"
