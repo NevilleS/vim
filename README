@@ -1,4 +1,10 @@
 My portable vim configuration, including the plugins I like and use.
 
+First, clone the repo and the submodules:
+    git clone https://github.com/NevilleS/vim.git --recursive
+
 To install, clone this repo to ~/.vim and add a symlink:
     ln -s ~/.vim/vimrc ~/.vimrc
+
+Or just edit your ~/.vimrc file to source:
+    source ~/.vim/vimrc
