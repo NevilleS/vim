@@ -77,3 +77,11 @@ set wildmenu
 if has("win32")
     let g:ruby_path = "C:\Ruby193\bin"
 endif
+
+if has("autocmd")
+    " Restore cursor position
+    autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+endif
