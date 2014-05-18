@@ -54,16 +54,13 @@ set nu
 " Richard's gosu vim hints for astyle
 set modeline "enable reading of vim settings from specially formatted comments
 let c_space_errors=1 "highlight trailing whitespace
-set ts=4 sw=4 expandtab "make tab key conform to coding guidelines
+set ts=2 sts=2 sw=2 expandtab "make tab key conform to coding guidelines
 " let w:m1=matchadd('Search', '\%>80v.\%<122v', -1) "highlight lines >80 chars in yellow
 let w:m2=matchadd('ErrorMsg', '\%>120v.\+', -1) " highlight lines > 120 chars in red
 let w:m3=matchadd('ErrorMsg', '\t', -1) " highlight tabs in red
 set cindent "indent as you type
 set cinoptions='t0g0' "tweak indenting style
 set tw=120
-
-" Easily switch between .h and .cpp in the same directory, or ../src/xyz.cpp <-> ../include/xyz.h
-map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,:s,include/\(\w\+\.\w\+\)$,XABCX/\1,:s,src/\(\w\+\.\w\+\)$,include/\1,:s,XABCX,src,<CR>
 
 " Enable mouse support
 set mouse=a
