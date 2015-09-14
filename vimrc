@@ -102,3 +102,5 @@ if has("autocmd")
       \ endif
 endif
 
+" Add vim-rspec runner command
+command! Spec :call RunNearestSpec()
