@@ -76,7 +76,7 @@ set ts=2 sts=2 sw=2 expandtab "make tab key conform to coding guidelines
 let w:m3=matchadd('ErrorMsg', '\t', -1) " highlight tabs in red
 set cindent "indent as you type
 set cinoptions='t0g0' "tweak indenting style
-set tw=100
+set tw=120
 
 " Enable mouse support
 set mouse=a
@@ -85,6 +85,9 @@ set mousehide
 " Don't do full tab completion unless you hit tab 3 times
 set wildmode=longest,list,full
 set wildmenu
+
+" Ignore dependencies for CtrlP
+set wildignore+=*/bower_components/*,*/node_modules/*,*/dist/*
 
 " Configure Windows
 if has("win32")
