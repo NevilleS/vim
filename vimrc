@@ -103,4 +103,12 @@ if has("autocmd")
 endif
 
 " Add vim-rspec runner command
-command! Spec :call RunNearestSpec()
+command! Run :call RunNearestSpec()
+map <Leader>r :call RunNearestSpec()<CR>
+
+" Edit the vimrc, and auto-reload it after a change
+command! Vimrc :e ~/.vim/vimrc
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
