@@ -1,15 +1,10 @@
 My portable vim configuration, including the plugins I like and use.
 
-First, clone the repo and the submodules:
+First, clone the repo and the Vundle submodule:
     git clone https://github.com/NevilleS/vim.git --recursive ~/.vim
 
 Now edit your ~/.vimrc file to source:
     source ~/.vim/vimrc
 
-Alternatively, if you don't want to clobber your .vim directory (e.g. you are on Windows and don't want to touch that),
-clone the repo somewhere else (e.g. $HOME/vim):
-    git clone https://github.com/NevilleS/vim.git --recursive $HOME/vim
-
-Now edit your platform's .vimrc file (e.g. on Windows edit $VIM/_vimrc) and add the following:
-    set rtp^=$HOME/vim
-    source $HOME/vim/vimrc
+Now run :PluginInstall to have Vundle pull in all the other plugins
+    vim +PluginInstall +qall
