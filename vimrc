@@ -1,7 +1,29 @@
-" Configure pathogen first
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+set nocompatible
 
+" Vundle setup begin
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'tomtom/tlib_vim.git'
+Plugin 'tpope/vim-abolish.git'
+Plugin 'MarcWeber/vim-addon-mw-utils.git'
+Plugin 'bling/vim-airline'
+Plugin 'kchmck/vim-coffee-script.git'
+Plugin 'tpope/vim-rails.git'
+Plugin 'thoughtbot/vim-rspec.git'
+Plugin 'garbas/vim-snipmate.git'
+Plugin 'honza/vim-snippets.git'
+
+" Vundle setup end
+call vundle#end()
+
+" Basic config
 syntax enable
 filetype plugin on
 filetype indent on
