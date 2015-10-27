@@ -32,6 +32,7 @@ set autoindent
 set bs=2
 set guifont=Consolas
 set hidden
+set cursorline
 
 " Use solarized colorscheme
 set t_Co=16
@@ -109,7 +110,8 @@ set wildmode=longest,list,full
 set wildmenu
 
 " Ignore dependencies for CtrlP
-set wildignore+=*/bower_components/*,*/node_modules/*,*/dist/*
+" (from https://github.com/ctrlpvim/ctrlp.vim README)
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Configure Windows
 if has("win32")
