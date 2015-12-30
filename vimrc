@@ -15,10 +15,14 @@ Plugin 'tpope/vim-abolish.git'
 Plugin 'MarcWeber/vim-addon-mw-utils.git'
 Plugin 'bling/vim-airline'
 Plugin 'kchmck/vim-coffee-script.git'
-Plugin 'tpope/vim-rails.git'
 Plugin 'thoughtbot/vim-rspec.git'
 Plugin 'garbas/vim-snipmate.git'
 Plugin 'honza/vim-snippets.git'
+Plugin 'Valloric/YouCompleteMe.git'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
 
 " Vundle setup end
 call vundle#end()
@@ -53,6 +57,7 @@ colorscheme solarized
 " Highlight search results
 set incsearch
 set hlsearch
+"nnoremap <cr> :nohlsearch<cr>
 
 " Tell VIM to always put a status line, even if there is only one window
 set laststatus=2
@@ -64,6 +69,7 @@ let g:airline#extensions#tabline#enabled = 1
 nmap <tab> :bnext<CR>
 nmap <S-tab> :bprev<CR>
 nmap <Leader>q :bdelete<CR>
+nmap <Leader>Q :bdelete!<CR>
 
 " NERD Tree settings
 " Toggle the NERD Tree on and off with F7
@@ -80,8 +86,9 @@ set foldmethod=indent foldlevel=999
 nmap <silent> <space> :exe 'silent!normal!za' <cr>
 highlight Folded ctermbg=Black ctermfg=DarkBlue
 
-" Show line numbers... (nah)
-set nu
+" Line numbers
+"set nu "regular
+set rnu "relative
 
 " Highlight whitespace errors
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -113,22 +120,33 @@ set wildmenu
 " (from https://github.com/ctrlpvim/ctrlp.vim README)
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-" Configure Windows
-if has("win32")
-    let g:ruby_path = "C:\Ruby193\bin"
-endif
-
-if has("autocmd")
-    " Restore cursor position
-    autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-endif
+" Restore cursor position
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
 " Add vim-rspec runner command
-command! Run :call RunNearestSpec()
-map <Leader>r :call RunNearestSpec()<CR>
+command! Spec :call RunNearestSpec()
+map <Leader>s :call RunNearestSpec()<CR>
+
+" YouCompleteMe tweaks
+let g:ycm_add_preview_to_completeopt = 1
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" Typescript stuff
+"     <C-]> : go to type definition
+"     <C-t> : go back from definition
+" <Leader>t : echo type information at cursor
+" <Leader>r : rename symbol at cursor
+autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbol)
+let g:tsuquyomi_disable_quickfix = 0 "set this to disable the auto build on save
+"autocmd BufNewFile,BufRead *.tsx set filetype=typescript.jsx
+autocmd BufNewFile,BufRead *.graphql set filetype=typescript.jsx
 
 " Edit the vimrc, and auto-reload it after a change
 command! Vimrc :e ~/.vim/vimrc
