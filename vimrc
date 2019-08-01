@@ -23,6 +23,14 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
+Plugin 'tpope/vim-commentary'
+Plugin 'wincent/loupe'
+Plugin 'vim-ruby/vim-ruby.git'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'fatih/vim-go'
 
 " Vundle setup end
 call vundle#end()
@@ -64,6 +72,7 @@ set laststatus=2
 
 " Configure airline status/tab line
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Switch between buffers with tab and shift-tab
 nmap <tab> :bnext<CR>
@@ -100,13 +109,13 @@ autocmd BufWinLeave * call clearmatches()
 
 " Richard's gosu vim hints for astyle
 set modeline "enable reading of vim settings from specially formatted comments
-set ts=2 sts=2 sw=2 expandtab "make tab key conform to coding guidelines
-"let w:m1=matchadd('Search', '\%>80v.\%<122v', -1) "highlight lines >80 chars in yellow
-"let w:m2=matchadd('ErrorMsg', '\%>120v.\+', -1) " highlight lines > 120 chars in red
-let w:m3=matchadd('ErrorMsg', '\t', -1) " highlight tabs in red
-set cindent "indent as you type
-set cinoptions='t0g0' "tweak indenting style
-set tw=120
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "make tab key conform to coding guidelines
+" let w:m1=matchadd('Search', '\%>80v.\%<102v', -1) "highlight lines > 80 chars in yellow
+" let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1) " highlight lines > 100 chars in red
+" let w:m3=matchadd('ErrorMsg', '\t', -1) " highlight tabs in red
+" set cindent "indent as you type
+" set cinoptions='t0g0' "tweak indenting style
+set textwidth=100
 
 " Enable mouse support
 set mouse=a
@@ -115,6 +124,10 @@ set mousehide
 " Don't do full tab completion unless you hit tab 3 times
 set wildmode=longest,list,full
 set wildmenu
+
+" Navigate between quickfix entries quickly
+nnoremap <silent> <C-j> :cn<CR>
+nnoremap <silent> <C-k> :cp<CR>
 
 " Ignore dependencies for CtrlP
 " (from https://github.com/ctrlpvim/ctrlp.vim README)
@@ -147,6 +160,19 @@ autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbol
 let g:tsuquyomi_disable_quickfix = 0 "set this to disable the auto build on save
 "autocmd BufNewFile,BufRead *.tsx set filetype=typescript.jsx
 autocmd BufNewFile,BufRead *.graphql set filetype=typescript.jsx
+
+" Markdown (prose) stuff
+" <C-m>        : generate markdown preview
+" :TableFormat : format table nicely
+" :GenTocGFM   : generate table of contents at cursor
+" :UpdateToc   : update table of contents
+let vim_markdown_preview_github=1 " use github-flavoured markdown for vim-mardown-preview
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Google Chrome'
+autocmd FileType markdown setlocal textwidth=0 " disable auto textwidth
+
+" Python stuff
+autocmd FileType python setlocal textwidth=79 " 80 characters, PEP-8 style
 
 " Edit the vimrc, and auto-reload it after a change
 command! Vimrc :e ~/.vim/vimrc
